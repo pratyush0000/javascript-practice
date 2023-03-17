@@ -6,13 +6,15 @@ let getcount = document.getElementById("count")
 let jscount = 0
 function increment(){
     jscount+=1
-    getcount.innerText=jscount
+    getcount.textContent=jscount
 }
 
 let getentries = document.getElementById("entries")
 
 function save(){
-    getentries.innerText+=jscount + "->"
+    getentries.textContent+=jscount + "->"
+    jscount=0
+    getcount.textContent=0
 }
 
 
