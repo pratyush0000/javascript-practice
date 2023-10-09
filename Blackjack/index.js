@@ -1,13 +1,12 @@
 let cards = []
 let sum = 0
+let messagetoplayervar= document.getElementById("messageontop")
 let sumstore = document.querySelector("#sumheading")
 let cardstore = document.getElementById("cardsheading")
-console.log(cards)
 
 let hasBlackJack = false
 let isAlive = false
 let resultMessage =""
-let messagetoplayervar= document.getElementById("messageontop")
 
 
 function startGame(){
@@ -16,9 +15,8 @@ function startGame(){
 
     let firstCard = randomCardGen()
     let secondCard =  randomCardGen()
-    let cards = [firstCard, secondCard]
-    let sum = firstCard + secondCard
-
+    cards = [firstCard, secondCard]
+    sum = firstCard + secondCard
     renderGame()
 }
 
@@ -26,17 +24,17 @@ function startGame(){
 
 function renderGame(){
     if(sum <=20){
-        let hasBlackJack = false
-        isAlive = true
+        // let hasBlackJack = false
+        // isAlive = true
         resultMessage = "do you want to draw a new card? "
     } 
     else if(sum === 21){
         let hasBlackJack =true
-        isAlive = true
+        isAlive = false
         resultMessage = "you are Black, Jack "
     } 
     else{
-        let hasBlackJack = false
+        // hasBlackJack = false
         isAlive = false
         resultMessage = "LOSER "
     }
@@ -49,19 +47,21 @@ function renderGame(){
     for(let i=0;i<cards.length;i++){
         cardstore.textContent += cards[i] + " "
     }
-
+    console.log(cards)
     // cardstore.textContent = "Cards: " + firstCard + " + " + secondCard
 }
 
 
 
 function newCard(){
-    let newCard = randomCardGen()
+    if(isAlive === true && hasBlackJack === false){
+        let newCard = randomCardGen()
 
-    sum += newCard
-    cards.push(newCard)
+        sum += newCard
+        cards.push(newCard)
 
-    renderGame()
+        renderGame()
+    }
 }
 
 function randomCardGen(){
