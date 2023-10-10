@@ -3,6 +3,10 @@ let sum = 0
 let messagetoplayervar= document.getElementById("messageontop")
 let sumstore = document.querySelector("#sumheading")
 let cardstore = document.getElementById("cardsheading")
+let dealersCardsStore = document.getElementById("dealerscardsheading")
+let dealersSumStore = document.getElementById("dealerssumheading")
+let winner = document.getElementById("resultheading")
+
 
 let hasBlackJack = false
 let isAlive = false
@@ -10,6 +14,11 @@ let resultMessage =""
 resetButton.disabled = true;
 newCardButton.disabled=true;
 foldButton.disabled=true;
+
+
+// dealer
+let dealercards = []
+let dealersum = 0
 
 
 // function disable(x){
@@ -31,6 +40,14 @@ function startGame(){
     let secondCard =  randomCardGen()
     cards = [firstCard, secondCard]
     sum = firstCard + secondCard
+
+    let dealerFirstCard = randomCardGen()
+    let dealerSecondCard =  randomCardGen()
+    dealercards = [dealerFirstCard, dealerSecondCard]
+    dealersum = dealerFirstCard + dealerSecondCard
+
+    dealerNewCard()
+    
     renderGame()
 }
 
@@ -51,6 +68,11 @@ function resetGame(){
     cardstore.textContent = "Cards: "
     messagetoplayervar.textContent = "Want to play a round?"
     sumstore.textContent = "Sum: "
+
+    // for dealer
+    dealersCardsStore.textContent = "Dealer's Cards: "
+    dealersSumStore.textContent = "Dealer's Sum: "
+    winner.textContent = "Winner: "
 }
 
 function fold(){
@@ -58,6 +80,8 @@ function fold(){
     startButton.disabled = true;
     newCardButton.disabled=true;
     foldButton.disabled=true;
+
+    showResult()
 }
 
 
@@ -74,6 +98,8 @@ function renderGame(){
         resultMessage = "you are Black, Jack "
         newCardButton.disabled=true;
         foldButton.disabled=true;
+
+        showResult()
     } 
     else{
         // hasBlackJack = false
@@ -81,6 +107,9 @@ function renderGame(){
         resultMessage = "LOSER "
         newCardButton.disabled=true;
         foldButton.disabled=true;
+
+
+        showResult()
     }
     messagetoplayervar.textContent=resultMessage
     sumstore.textContent = "Sum: " + sum
@@ -91,6 +120,21 @@ function renderGame(){
     for(let i=0;i<cards.length;i++){
         cardstore.textContent += cards[i] + " "
     }
+
+
+    // for dealer
+    // dealersCardsStore.textContent = "Dealer's Cards: "
+    // for(let i=0;i<dealercards.length;i++){
+    //     dealersCardsStore.textContent += dealercards[i] + " "
+    // }
+    // dealersSumStore.textContent = "Dealer's Sum: " + dealersum
+    dealersCardsStore.textContent = "Dealer's Cards: " + dealercards[0] + " "
+    for(let i=0;i<dealercards.length-1;i++){
+        dealersCardsStore.textContent += "*" + " "
+    }
+    dealersSumStore.textContent = "Dealer's Sum: TBD"
+
+
     console.log(cards)
     // cardstore.textContent = "Cards: " + firstCard + " + " + secondCard
 }
@@ -104,6 +148,7 @@ function newCard(){
         sum += newCard
         cards.push(newCard)
 
+    
         renderGame()
     }
 }
@@ -126,14 +171,51 @@ function randomCardGen(){
 
 
 
-let playerobj = {
-    nameofplayer: "Pratyush",
-    chipsonhand: 145
+// let playerobj = {
+//     nameofplayer: "Pratyush",
+//     chipsonhand: 145
+// }
+
+// // let playerName = "Pratyush"
+// // let playerChips = 145
+
+// let player = document.getElementById("player")
+// player.textContent = playerobj.nameofplayer + ": $" + playerobj.chipsonhand
+// // player.textContent= playerName + ": $" + playerChips
+
+
+function dealerNewCard(){
+    while(dealersum<=16){
+        let dealerNewCard = randomCardGen()
+
+        dealersum += dealerNewCard
+        dealercards.push(dealerNewCard)
+    }
 }
 
-// let playerName = "Pratyush"
-// let playerChips = 145
 
-let player = document.getElementById("player")
-player.textContent = playerobj.nameofplayer + ": $" + playerobj.chipsonhand
-// player.textContent= playerName + ": $" + playerChips
+
+function showResult(){
+
+    // for dealer
+    dealersCardsStore.textContent = "Dear's Cards: "
+    for(let i=0;i<dealercards.length;i++){
+       
+        dealersCardsStore.textContent += dealercards[i] + " "
+    }
+    dealersSumStore.textContent = "Dealer's Sum: " + dealersum
+
+    if((dealersum>sum&&dealersum<=21)||(sum>21&&dealersum<=21)){
+        winner.textContent = "Winner: Dealer"
+    }
+    else if((sum>dealersum&&sum<=21)||(dealersum>21&&sum<=21)){
+        winner.textContent = "Winner: You"
+    }
+    else if((sum>21&&dealersum>21)||dealersum===sum){
+        winner.textContent = "Draw"
+    }
+    else{
+        winner.textContent = "new condition"
+    }
+
+}
