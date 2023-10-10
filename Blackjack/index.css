@@ -27,3 +27,10 @@ button {
     margin-bottom: 2px;
     margin-top: 2px;
 }
+
+button:disabled{
+    background: #e6e6e6; /* Light gray background */
+    color: #4c8c51; /* Darker green text color */
+    cursor: not-allowed; /* Change cursor to indicate not clickable */
+
+}

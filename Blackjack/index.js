@@ -7,17 +7,44 @@ let cardstore = document.getElementById("cardsheading")
 let hasBlackJack = false
 let isAlive = false
 let resultMessage =""
+resetButton.disabled = true;
 
+
+// function disable(x){
+//     x.disabled = true
+//     startGame()
+// }
 
 function startGame(){
 
     isAlive = true
+
+    startButton.disabled = true;
+    resetButton.disabled = false;
+
 
     let firstCard = randomCardGen()
     let secondCard =  randomCardGen()
     cards = [firstCard, secondCard]
     sum = firstCard + secondCard
     renderGame()
+}
+
+function resetGame(){
+
+    cards = []
+    sum = 0
+
+    hasBlackJack = false
+    isAlive = false
+    resultMessage =""
+    resetButton.disabled = true;
+    startButton.disabled = false;
+    newCardButton.disabled=false;
+
+    cardstore.textContent = "Cards: "
+    messagetoplayervar.textContent = "Want to play a round?"
+    sumstore.textContent = "Sum: "
 }
 
 
@@ -32,11 +59,13 @@ function renderGame(){
         let hasBlackJack =true
         isAlive = false
         resultMessage = "you are Black, Jack "
+        newCardButton.disabled=true
     } 
     else{
         // hasBlackJack = false
         isAlive = false
         resultMessage = "LOSER "
+        newCardButton.disabled=true
     }
     messagetoplayervar.textContent=resultMessage
     sumstore.textContent = "Sum: " + sum
@@ -79,8 +108,17 @@ function randomCardGen(){
 }
 
 
-let playerName = "Pratyush"
-let playerChips = 145
+
+
+
+let playerobj = {
+    nameofplayer: "Pratyush",
+    chipsonhand: 145
+}
+
+// let playerName = "Pratyush"
+// let playerChips = 145
 
 let player = document.getElementById("player")
-player.textContent= playerName + ": $" + playerChips
+player.textContent = playerobj.nameofplayer + ": $" + playerobj.chipsonhand
+// player.textContent= playerName + ": $" + playerChips

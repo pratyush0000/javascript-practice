@@ -7,8 +7,20 @@
         <p id="messageontop">Want to play a round?</p>
         <p id="cardsheading">Cards:</p>
         <p id="sumheading">Sum:</p>
-        <button onclick="startGame()">START GAME</button>
-        <button onclick="newCard()">NEW CARD</button>
+
+        <div class="button-container">
+            <button id="startButton" onclick="startGame()">START GAME</button>
+            <button id="resetButton" onclick="resetGame()">RESET</button>
+        </div>
+        <div class="button-container">
+            <button id="newCardButton" onclick="newCard()">NEW CARD</button>
+        </div>
+
+
+
+        <!-- <button onclick="disable(this)">START GAME</button>
+        <button onclick="newCard()">RESET</button>
+        <button id="newcardid" onclick="newCard()">NEW CARD</button> -->
         <p id="player"></p>
         <script src="index.js"></script>
     </body>
