@@ -88,14 +88,16 @@ function fold(){
 
 function renderGame(){
     if(sum <=20){
+        showdeal2();
         // let hasBlackJack = false
         // isAlive = true
         resultMessage = "do you want to draw a new card? "
     } 
     else if(sum === 21){
+        showdeal();
         hasBlackJack =true;
         isAlive = false;
-        resultMessage = "you are Black, Jack "
+        resultMessage = "you are Black, Jack ";
         newCardButton.disabled=true;
         foldButton.disabled=true;
 
@@ -103,6 +105,7 @@ function renderGame(){
     } 
     else{
         // hasBlackJack = false
+        showdeal();
         isAlive = false
         resultMessage = "LOSER "
         newCardButton.disabled=true;
@@ -128,12 +131,6 @@ function renderGame(){
     //     dealersCardsStore.textContent += dealercards[i] + " "
     // }
     // dealersSumStore.textContent = "Dealer's Sum: " + dealersum
-    dealersCardsStore.textContent = "Dealer's Cards: " + dealercards[0] + " "
-    for(let i=0;i<dealercards.length-1;i++){
-        dealersCardsStore.textContent += "*" + " "
-    }
-    dealersSumStore.textContent = "Dealer's Sum: TBD"
-
 
     console.log(cards)
     // cardstore.textContent = "Cards: " + firstCard + " + " + secondCard
@@ -193,17 +190,36 @@ function dealerNewCard(){
     }
 }
 
+function showdeal()
+{
+    let realcard=dealercards;
+    let realsum=dealersum;
+    dealersCardsStore.textContent = "Dealer's Cards: "
+    for(let i=0;i<realcard.length;i++){
+        dealersCardsStore.textContent += realcard[i] + " "
+    }
+    dealersSumStore.textContent = "Dealer's Sum: " + realsum
 
+}
+
+function showdeal2()
+{
+    let realcard=dealercards;
+    let realsum=dealersum;
+    dealersCardsStore.textContent = "Dealer's Cards: "
+    dealersCardsStore.textContent += realcard[0] + " "
+    for(let i=0;i<realcard.length-1;i++){
+        dealersCardsStore.textContent += "*" + " "
+    }
+    dealersSumStore.textContent = "Dealer's Sum: TBD" 
+
+}
 
 function showResult(){
 
     // for dealer
-    dealersCardsStore.textContent = "Dear's Cards: "
-    for(let i=0;i<dealercards.length;i++){
-       
-        dealersCardsStore.textContent += dealercards[i] + " "
-    }
-    dealersSumStore.textContent = "Dealer's Sum: " + dealersum
+   
+    showdeal()
 
     if((dealersum>sum&&dealersum<=21)||(sum>21&&dealersum<=21)){
         winner.textContent = "Winner: Dealer"
