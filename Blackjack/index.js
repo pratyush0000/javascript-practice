@@ -77,3 +77,10 @@ function randomCardGen(){
         return randomNumber
     }
 }
+
+
+let playerName = "Pratyush"
+let playerChips = 145
+
+let player = document.getElementById("player")
+player.textContent= playerName + ": $" + playerChips
