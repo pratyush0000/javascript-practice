@@ -8,6 +8,8 @@ let hasBlackJack = false
 let isAlive = false
 let resultMessage =""
 resetButton.disabled = true;
+newCardButton.disabled=true;
+foldButton.disabled=true;
 
 
 // function disable(x){
@@ -21,6 +23,8 @@ function startGame(){
 
     startButton.disabled = true;
     resetButton.disabled = false;
+    newCardButton.disabled=false;
+    foldButton.disabled=false;
 
 
     let firstCard = randomCardGen()
@@ -38,13 +42,22 @@ function resetGame(){
     hasBlackJack = false
     isAlive = false
     resultMessage =""
+
     resetButton.disabled = true;
     startButton.disabled = false;
-    newCardButton.disabled=false;
+    newCardButton.disabled=true;
+    foldButton.disabled=true;
 
     cardstore.textContent = "Cards: "
     messagetoplayervar.textContent = "Want to play a round?"
     sumstore.textContent = "Sum: "
+}
+
+function fold(){
+    resetButton.disabled = false;
+    startButton.disabled = true;
+    newCardButton.disabled=true;
+    foldButton.disabled=true;
 }
 
 
@@ -56,16 +69,18 @@ function renderGame(){
         resultMessage = "do you want to draw a new card? "
     } 
     else if(sum === 21){
-        let hasBlackJack =true
-        isAlive = false
+        hasBlackJack =true;
+        isAlive = false;
         resultMessage = "you are Black, Jack "
-        newCardButton.disabled=true
+        newCardButton.disabled=true;
+        foldButton.disabled=true;
     } 
     else{
         // hasBlackJack = false
         isAlive = false
         resultMessage = "LOSER "
-        newCardButton.disabled=true
+        newCardButton.disabled=true;
+        foldButton.disabled=true;
     }
     messagetoplayervar.textContent=resultMessage
     sumstore.textContent = "Sum: " + sum
