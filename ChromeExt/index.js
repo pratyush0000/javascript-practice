@@ -1,12 +1,20 @@
 //inputbutton
+let myLeads = []
 const inputButton = document.getElementById("inputButton")
-let bookmarkStore = []
 const inputText = document.getElementById("inputText")
-let bookmarkList = document.getElementById("bookmarkList")
+let ulEl = document.getElementById("ulEl")
 
 inputButton.addEventListener("click", function(){
-    bookmarkStore.push(inputText.value)
-    bookmarkList.textContent = (bookmarkStore)
-    console.log(bookmarkStore)
+    myLeads.push(inputText.value)
+    inputText.value=""
+    printList()
 })
+
+function printList(){
+    let listItems = ""
+    for(let i=0;i<myLeads.length;i++){
+        listItems += "<li><a href = ''>" + myLeads[i] + "</a></li>"
+    }
+    ulEl.innerHTML = listItems
+}
 
