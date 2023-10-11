@@ -9,26 +9,31 @@ input {
     width: 100%;
     padding: 10px;
     box-sizing: border-box;
-    border: 1px solid #5f9341;
+    border: 1px solid #00BCD4;
+    /* border: 1px solid #5f9341; */
     margin-bottom: 4px;
 }
 
 button {
-    background: #5f9341;
+    background: #00BCD4;
+    /* background: #5f9341; */
     color: white;
     padding: 10px 20px;
-    border: 1px solid #5f9341;
+    border: 1px solid #00BCD4;
+    /* border: 1px solid #5f9341; */
     font-weight: bold;
 }
 
 #deleteButton {
     background: white;
-    color: #5f9341;
+    color: #00BCD4;
+    /* color: #5f9341; */
 }
 
 ul {
     margin-top: 20px;
-    list-style: disc;
+    list-style: none;
+    padding-left: 0;
 }
 
 li {
@@ -36,6 +41,9 @@ li {
 }
 
 a {
-    color: #5f9341;
+    color: #00BCD4;
+    /* color: #5f9341; */
 }
+
+/* 00BCD4 */
 
