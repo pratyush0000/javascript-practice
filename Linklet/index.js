@@ -2,6 +2,7 @@
 let myLeads = []
 const inputButton = document.getElementById("inputButton")
 const inputText = document.getElementById("inputText")
+const tabButton = document.getElementById("tabButton")
 const deleteButton = document.getElementById("deleteButton")
 let ulEl = document.getElementById("ulEl")
 
@@ -13,7 +14,7 @@ console.log(ls)
 
 if(ls){
     myLeads=ls
-    printList()
+    printList(myLeads)
 }
 
 
@@ -23,27 +24,38 @@ inputButton.addEventListener("click", function(){
     inputText.value=""
     localStorage.setItem("myLeads",JSON.stringify(myLeads))
 
-    printList()
+    printList(myLeads)
 
 
     console.log(localStorage.getItem("myLeads"))
 })
 
 
+
+tabButton.addEventListener("click", function(){
+
+    chrome.tabs.query({active: true, currentWindow: true}, function(tabs){
+        myLeads.push(tabs[0].URL)
+        localStorage.setItem("myLeads",JSON.stringify(myLeads))
+        printList(myLeads)
+    })
+})
+
+
 deleteButton.addEventListener("dblclick", function(){
     localStorage.clear()
     myLeads=[]
-    printList()
+    printList(myLeads)
     // ulEl.textContent=myLeads
 })
 
-function printList(){
+function printList(e){
     let listItems = ""
-    for(let i=0;i<myLeads.length;i++){
+    for(let i=0;i<e.length;i++){
         listItems += `
             <li>
-                <a href = '${myLeads[i]}' target='_blank'>
-                    ${myLeads[i]}
+                <a href = '${e[i]}' target='_blank'>
+                    ${e[i]}
                 </a>
             </li>
         `
