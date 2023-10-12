@@ -2,14 +2,19 @@
 let myLeads = []
 const inputButton = document.getElementById("inputButton")
 const inputText = document.getElementById("inputText")
+const deleteButton = document.getElementById("deleteButton")
 let ulEl = document.getElementById("ulEl")
 
 
 
-localStorage.clear()
-let ls = JSON.parse(localStorage.getItem("myLeads"))
+const ls = JSON.parse(localStorage.getItem("myLeads"))
 
 console.log(ls)
+
+if(ls){
+    myLeads=ls
+    printList()
+}
 
 
 inputButton.addEventListener("click", function(){
@@ -17,11 +22,19 @@ inputButton.addEventListener("click", function(){
 
     inputText.value=""
     localStorage.setItem("myLeads",JSON.stringify(myLeads))
-    
+
     printList()
 
 
     console.log(localStorage.getItem("myLeads"))
+})
+
+
+deleteButton.addEventListener("dblclick", function(){
+    localStorage.clear()
+    myLeads=[]
+    printList()
+    // ulEl.textContent=myLeads
 })
 
 function printList(){
