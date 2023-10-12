@@ -32,14 +32,27 @@ inputButton.addEventListener("click", function(){
 
 
 
-tabButton.addEventListener("click", function(){
 
-    chrome.tabs.query({active: true, currentWindow: true}, function(tabs){
-        myLeads.push(tabs[0].URL)
-        localStorage.setItem("myLeads",JSON.stringify(myLeads))
-        printList(myLeads)
-    })
-})
+tabButton.addEventListener("click", function () {
+    chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+        if (tabs && tabs[0]) {
+            myLeads.push(tabs[0].url);
+            localStorage.setItem("myLeads", JSON.stringify(myLeads));
+            printList(myLeads);
+        } else {
+            console.log("No active tab found.");
+        }
+    });
+});
+
+// tabButton.addEventListener("click", function(){
+
+//     chrome.tabs.query({active: true, currentWindow: true}, function(tabs){
+//         myLeads.push(tabs[0].URL)
+//         localStorage.setItem("myLeads",JSON.stringify(myLeads))
+//         printList(myLeads)
+//     })
+// })
 
 
 deleteButton.addEventListener("dblclick", function(){
