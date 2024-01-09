@@ -1,18 +1,34 @@
-const newYear = "1 Jan 2025";
+document.addEventListener('DOMContentLoaded', function () {
+    const days = document.getElementById('days');
+    const hours = document.getElementById('hours');
+    const mins = document.getElementById('mins');
+    const secs = document.getElementById('secs');
 
-let countdown = () =>{
-    const newYearDate = new Date(newYear);
-    const currentDate = new Date();
+    const newYear = "1 Jan 2025";
 
-    const secLeftTotal = (newYearDate-currentDate)/1000
-    const daysLeft = Math.floor(secLeftTotal/3600/24);
-    const hoursLeft = Math.floor(secLeftTotal/3600)%24;
-    const minsLeft = Math.floor(secLeftTotal/60)%60;
-    const secLeft = Math.floor(secLeftTotal)%60;
+    let countdown = () => {
+        const newYearDate = new Date(newYear);
+        const currentDate = new Date();
 
-    console.log(daysLeft,hoursLeft,minsLeft,secLeft)
-}
+        const secLeftTotal = (newYearDate - currentDate) / 1000;
+        const daysLeft = Math.floor(secLeftTotal / 3600 / 24);
+        const hoursLeft = Math.floor(secLeftTotal / 3600) % 24;
+        const minsLeft = Math.floor(secLeftTotal / 60) % 60;
+        const secLeft = Math.floor(secLeftTotal) % 60;
 
-countdown()
+        days.innerHTML = daysLeft;
+        hours.innerHTML = formatTime(hoursLeft);
+        mins.innerHTML = formatTime(minsLeft);
+        secs.innerHTML = formatTime(secLeft);
 
-setInterval(countdown,1000)
+        console.log(daysLeft, hoursLeft, minsLeft, secLeft);
+    }
+
+    function formatTime(time){
+        return time < 10 ? `0${time}` : time;
+    }
+
+    countdown();
+
+    setInterval(countdown, 1000);
+});
