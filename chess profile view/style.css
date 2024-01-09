@@ -1,0 +1,106 @@
+body
+{
+    background-color: #2C2B29;
+    color: #fff;
+}
+h1,h2,h3,h4,h5,h6
+{
+    display: inline;
+}
+
+.container {    
+    width:340px;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    /* background-color: green; */
+  }
+
+
+#card
+{
+    background-color: #4E7837;
+    display: none;
+    margin: auto;
+    padding: 10px;
+    margin-top: 3%;
+    height: 60%;
+    border: #fff solid 2px;
+    border-radius: 20px;
+    width:300px;
+    box-shadow: 5px 5px 5px 5px #fff;
+}
+
+
+.search{
+    display: flex;
+    flex-direction: row;
+    margin-left: 0%;
+    padding: 10px;
+    margin-top: 3%;
+    /* background-color: aqua; */
+}
+
+.searchbox{
+    width: 65%;
+    /* background-color: purple; */
+}
+
+.sendbutton{
+    width: 35%;
+    /* margin-left: 2%; */
+    /* background-color: yellow; */
+    flex: 1;
+}
+
+img
+{
+    /* height:300px;
+    width: 300px; */
+    height:100%;
+    width: 100%;
+    position: relative;
+    border-radius: 20px;
+
+}
+
+.user
+{
+    height: 34px;
+    width: 90%;
+    display: inline;    
+    margin: auto;
+    margin-top: 3%;
+    margin-bottom: 3%;
+    /* margin-right: 20%; */
+    /* margin-left: 0%; */
+    padding: 10px;
+    border-radius: 7px 0px 0px 7px;
+    /* background-color: red; */
+}
+
+#btn
+{   
+    height: 57px;
+    width: 100%;
+    /* position: relative;
+    margin-left: 0px;
+    padding: 0px; */
+    /* display: block; */
+    /* padding: 15px 60px; */
+    font-size: 18px;
+    /* background-color: #101010; */
+    background-color: #4E7837;
+    color: #ffffff; 
+    position: relative;
+    margin: 6.5% 3%;
+    border: none;
+    border-radius: 0px 5px 5px 0px;
+    /* background-color: blue; */
+}
+
+a{
+    color: #fff;
+}
+
