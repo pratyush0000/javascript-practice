@@ -18,7 +18,7 @@ button.addEventListener('click',() =>{
         <h5>Player ID: ${data.player_id}</h5> <br>
         <h5>Current League: ${data.league}</h5> <br>
         <h5>Followers: ${data.followers}</h5> <br>
-        <h5>Profile URL: <a href = '${data.url}'>${data.username}</a></h5> <br>
+        <h5>Profile Link: <a href = '${data.url}'>${data.username}</a></h5> <br>
         <br>
         `
         console.log(data.followers)
