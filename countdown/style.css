@@ -7,43 +7,51 @@
 
 
 body {
-    background-image: url(snowbg.jpg);
+    background-image: url(snowbg3.jpg);
     background-size: cover;
     background-position: center center;
     min-height: 100vh;
     font-family: 'Poppins', sans-serif;
     margin: 0;
     align-items: center;
-    /* justify-content: center; */
+    color: #121212;
 
     display: flex;
     flex-direction: column;
-
 }
 
 
 h1{
     font-weight: normal;
-    font-size: 2rem;
-    margin-top: 4rem;
+    font-size: 5rem;
+    margin-top: 5rem;
+    margin-bottom: 0rem;
+    /* background-color: red; */
 }
 
 .bigtext{
-    font-size: 3rem;
+    font-size: 7rem;
     line-height: 1;
-    margin: 0 2rem;
+    /* background-color: green; */
+    margin-bottom: 0;
+    margin-top: 3rem;
+    /* margin: 0 6rem; */
 }
 
 .countdown{
     display: flex;
     flex-direction: row;
+    width: 100%;
+    /* background-color: aqua; */
 }
 
 .countdowntime{
     text-align: center;
+    flex: 1;
 }
 
 .countdown span{
-    /* font-weight: bold; */
-    font-size: 1rem;
+    font-size: 1.5rem;
+    /* background-color: blue; */
+    font-weight: bold;
 }
