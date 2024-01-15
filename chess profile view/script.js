@@ -8,8 +8,15 @@ button.addEventListener('click',() =>{
     const finalurl = url + `${username}`
 
     fetch(finalurl)
-    .then((response) => response.json())
+    .then((response) =>{
+        if(!response.ok)
+        {
+            throw new Error("no valid user name")
+        }
+        return response.json()
+    } )
     .then((data) => {
+       
         const card = document.getElementById('card');
         card.innerHTML = `<img src = "${data.avatar}">
         <br>
@@ -23,8 +30,8 @@ button.addEventListener('click',() =>{
         `
         console.log(data.followers)
     })
-    .catch((error) => {
-        console.error("Error fetching data:", error);
+    .catch((err) => {
+        console.log("there was an error",err);
         // You may want to display an error message in the card in case of an error
         card.innerHTML = `<p>Error fetching data. Please try again.</p>`;
     });
